@@ -52,7 +52,7 @@ useEffect(() => {
        about me
       </h2>
       <p>
-         Hi, I’m <span className="name-highlight">Matthew</span>. 
+         Hi, I’m <span className="name-highlight">Matthew</span>, a student at McGill University studying software engineering (co-op). 
         <br />
         I'm passionate about {' '}
         <br />

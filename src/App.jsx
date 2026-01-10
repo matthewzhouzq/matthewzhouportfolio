@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import CubeField from './components/CubeField'
 import Name from './components/Name'
@@ -17,11 +17,11 @@ export default function App() {
   useEffect(() => {
     window.__UI_HOVERING__ = false
   }, [])
-  
+
   const location = useLocation()
+
   const isHome = location.pathname === '/'
 
-  
   return (
     <div className="app">
       <Cursor />
@@ -41,7 +41,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Name />} />
           <Route path="/about" element={<About />} />
-          <Route path="/projects " element={<Projects />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
