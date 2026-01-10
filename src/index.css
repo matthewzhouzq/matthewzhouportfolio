@@ -1,0 +1,241 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background: #0f0f0f;
+  color: white;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+.app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D background */
+.canvas {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
+
+/* UI layer */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.name {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  font-size: clamp(3rem, 8vw, 4rem);
+  display: flex;
+  transform: scaleY(0.9);
+}
+
+.letter {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.5, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.name-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  pointer-events: auto;
+}
+
+/* Button rows */
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Buttons — works for both <button> and <a class="button"> */
+.buttons button,
+.buttons .button {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: #e5e5e5;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+
+  cursor: none; /* your custom cursor will handle the pointer */
+  transition: all 0.25s ease;
+
+  text-decoration: none; /* remove underline for <a> */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons button:hover,
+.buttons .button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: white; /* normal state */
+  pointer-events: auto;
+
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease-out,
+              background 0.2s ease,
+              width 0.2s ease,
+              height 0.2s ease,
+              border 0.2s ease;
+
+  z-index: 9999;
+}
+
+.page {
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.page h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+}
+.page p {
+  font-size: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 100;
+  max-width: 1000px;
+  line-height: 1.5;
+}
+
+.buttons.back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.buttons.back button {
+  font-size: 0.65rem;
+  opacity: 0.85;
+}
+
+.overlay > * {
+  pointer-events: auto;
+}
+
+.link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 100%;
+  height: 1px;
+  background: white;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.highlight {
+  color: #FEBD69;
+}
+
+.highlight::after {
+  background: #FEBD69;
+}
+
+
+.status-pill {
+  margin-top: -0.5rem;
+  padding: 0.4rem 0.9rem;
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.status-pill span {
+  color: #FEBD69;
+}
+
+.status-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
