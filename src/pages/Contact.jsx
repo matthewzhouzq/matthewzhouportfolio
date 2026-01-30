@@ -4,7 +4,7 @@ export default function Contact() {
       <h2>contact me</h2>
 
       <p>
-        email:{' '}
+        email:{'matthewzhou.contacts@gmail.com'}
         <a
           href="mailto:matthewzhou.contacts@gmail.com"
           className="link highlight"
